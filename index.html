@@ -62,7 +62,32 @@
       <label for="field2">No Paste</label>
       <input type="text" id="field2" name="field2" onpaste="return false;" placeholder="Pasting in here will NOT work">
     </div>
+    <div class="input-field">
+      <label for="field3">JS onpaste</label>
+      <input type="text" id="field3" name="field3" placeholder="Uses onpaste event handler">
+    </div>
+    <div class="input-field">
+      <label for="field4">JS eventlisten</label>
+      <input type="text" id="field4" name="field4" placeholder="Uses paste event listener">
+    </div>
   </div>
+
+  <script>
+    // alternative using onpaste property
+    const field_3 = document.querySelector("#field3");
+    field_3.onpaste = (event) => {
+      console.log("running custom onpaste listener");
+      return false;
+    }
+
+    // alternative using addEventListener method
+    const field_4 = document.querySelector("#field4");
+    field_4.addEventListener("paste", (event) => {
+      console.log("running custom paste listener");
+      event.preventDefault();
+      return false;
+    });
+  </script>
 </body>
 
 </html>
